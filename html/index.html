@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Ghibli Films</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="knockout-latest.js"></script>
+	<script type="module" src="bundle.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div id="root">
+		<div class="container">
+			<img src="Studio_Ghibli_logo.svg" alt="Studio Ghibli" />
+		</div>
+	</div>
+
+	<div class="container" data-bind="foreach: films">
+		<a data-bind="attr: { href: url }" class="card m-4 shadow rounded">
+			<div class="header">
+				<h1 data-bind="text: title"></h1>
+				<h2 data-bind="text: original_title"></h2>
+			</div>
+			<div class="body">
+				<div class="text-muted">
+					<p data-bind="text: description"></p>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+
+</body>
+
+</html>

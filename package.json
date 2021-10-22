@@ -1,0 +1,36 @@
+{
+  "name": "ghibli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "clean-build-steps": "rimraf build-tsc",
+    "clean-dist": "rimraf dist",
+    "clean": "npm-run-all --parallel clean-build-steps clean-dist",
+    "build:html": "cpx html/* dist/",
+    "build:scss": "node-sass sass -o dist/css/",
+    "build-tsc": "tsc",
+    "build-webpack": "webpack",
+    "build:script-dependecies": "cpx node_modules/knockout/build/output/knockout-latest.js dist/",
+    "build:scripts": "npm-run-all --serial build-tsc build-webpack",
+    "actual-build": "npm-run-all --parallel build:*",
+    "build": "npm-run-all --serial clean actual-build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "knockout": "^3.5.1",
+    "node-sass": "^6.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.35.1",
+    "webpack-cli": "^4.6.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
